@@ -1,0 +1,251 @@
+
+-- =====================================================
+-- DEMO USERS (5)
+-- =====================================================
+
+INSERT INTO Users
+(userId, Email, Pass, Name, Phone, DOB, Avater)
+VALUES
+('uid1', 'rahim@gmail.com', '123456', 'Rahim Ahmed',
+ '01711111111', '2001-05-12', 'rahim.jpg'),
+
+('uid2', 'karim@gmail.com', '123456', 'Karim Hasan',
+ '01722222222', '2002-03-20', 'karim.jpg'),
+
+('uid3', 'sakib@gmail.com', '123456', 'Sakib Khan',
+ '01733333333', '2001-11-08', 'sakib.jpg'),
+
+('uid4', 'tanvir@gmail.com', '123456', 'Tanvir Islam',
+ '01744444444', '2002-07-15', 'tanvir.jpg'),
+
+('uid5', 'fahim@gmail.com', '123456', 'Fahim Rahman',
+ '01755555555', '2001-09-25', 'fahim.jpg');
+
+
+-- =====================================================
+-- DEMO MESSES (5)
+-- =====================================================
+
+INSERT INTO Messes
+(
+    messId,
+    createdBy,
+    messName,
+    Currency,
+    isMorningMeal,
+    isLunchMeal,
+    isDinnerMeal,
+    mealSetLastTimeForMorning,
+    mealSetLastTimeForLunch,
+    mealSetLastTimeForNight,
+    messCreateDate
+)
+VALUES
+
+('ms1', 'uid1', 'Green View Mess', 'BDT',
+ TRUE, TRUE, TRUE, 8, 13, 20, '2026-08-01'),
+
+('ms2', 'uid2', 'City Boys Mess', 'BDT',
+ TRUE, TRUE, TRUE, 8, 13, 20, '2026-08-02'),
+
+('ms3', 'uid3', 'Lake Side Mess', 'BDT',
+ TRUE, TRUE, TRUE, 9, 13, 21, '2026-08-03'),
+
+('ms4', 'uid4', 'Student Home', 'BDT',
+ TRUE, TRUE, FALSE, 8, 14, 20, '2026-08-04'),
+
+('ms5', 'uid5', 'Dream House Mess', 'BDT',
+ TRUE, FALSE, TRUE, 9, 13, 21, '2026-08-05');
+
+
+-- =====================================================
+-- DEMO MEMBERS (5)
+-- =====================================================
+
+INSERT INTO Member
+(
+    messId,
+    userId,
+    Role,
+    messJoinDate,
+    AddedBy,
+    prevMonthDue
+)
+VALUES
+
+('ms1', 'uid1', 'Admin', '2026-08-01', 'uid1', 0),
+
+('ms1', 'uid2', 'Member', '2026-08-02', 'uid1', 500),
+
+('ms1', 'uid3', 'Member', '2026-08-03', 'uid1', 250),
+
+('ms2', 'uid4', 'Admin', '2026-08-04', 'uid2', 0),
+
+('ms2', 'uid5', 'Member', '2026-08-05', 'uid2', 300);
+
+
+-- =====================================================
+-- DEMO EXPENSES (5)
+-- =====================================================
+
+INSERT INTO Expenses
+(
+    expenseId,
+    messId,
+    amount,
+    note,
+    costDate,
+    costBy,
+    assignById
+)
+VALUES
+
+('exp1', 'ms1', 1200,
+ 'Rice and vegetables',
+ '2026-08-02', 'uid1', 'uid1'),
+
+('exp2', 'ms1', 800,
+ 'Fish and meat',
+ '2026-08-05', 'uid2', 'uid1'),
+
+('exp3', 'ms1', 500,
+ 'Oil and spices',
+ '2026-08-08', 'uid3', 'uid1'),
+
+('exp4', 'ms2', 1000,
+ 'Rice and vegetables',
+ '2026-08-03', 'uid4', 'uid4'),
+
+('exp5', 'ms2', 750,
+ 'Chicken and fish',
+ '2026-08-07', 'uid5', 'uid4');
+
+
+-- =====================================================
+-- DEMO MEAL RECORDS (5)
+-- =====================================================
+
+INSERT INTO MealRecord
+(
+    mealRecordId,
+    messId,
+    userId,
+    Morning,
+    Lunch,
+    Dinner,
+    mealDate,
+    mealAddedBy
+)
+VALUES
+
+('meal1', 'ms1', 'uid1',
+ 1, 1, 1,
+ '2026-08-20', 'uid1'),
+
+('meal2', 'ms1', 'uid2',
+ 1, 1, 0,
+ '2026-08-20', 'uid1'),
+
+('meal3', 'ms1', 'uid3',
+ 0, 1, 1,
+ '2026-08-20', 'uid1'),
+
+('meal4', 'ms2', 'uid4',
+ 1, 1, 1,
+ '2026-08-20', 'uid4'),
+
+('meal5', 'ms2', 'uid5',
+ 1, 0, 1,
+ '2026-08-20', 'uid4');
+
+
+-- =====================================================
+-- DEMO FUNDS (5)
+-- =====================================================
+
+INSERT INTO Funds
+(
+    fundId,
+    messId,
+    amount,
+    note,
+    submitDate,
+    submittedBy,
+    receivedById
+)
+VALUES
+
+('fund1', 'ms1', 5000,
+ 'Monthly deposit',
+ '2026-08-01', 'uid1', 'uid1'),
+
+('fund2', 'ms1', 3000,
+ 'Additional deposit',
+ '2026-08-03', 'uid2', 'uid1'),
+
+('fund3', 'ms1', 2500,
+ 'Monthly deposit',
+ '2026-08-05', 'uid3', 'uid1'),
+
+('fund4', 'ms2', 4000,
+ 'Monthly deposit',
+ '2026-08-02', 'uid4', 'uid4'),
+
+('fund5', 'ms2', 3500,
+ 'Monthly deposit',
+ '2026-08-04', 'uid5', 'uid4');
+
+
+-- =====================================================
+-- DEMO ASSIGN BAZAR (5)
+-- =====================================================
+
+INSERT INTO AssignBazar
+(
+    bazarId,
+    messId,
+    userId,
+    assignBy,
+    bazarDates
+)
+VALUES
+
+(
+    'bazar1',
+    'ms1',
+    'uid1',
+    'uid1',
+    '["2026-08-21", "2026-08-25"]'
+),
+
+(
+    'bazar2',
+    'ms1',
+    'uid2',
+    'uid1',
+    '["2026-08-22", "2026-08-26"]'
+),
+
+(
+    'bazar3',
+    'ms1',
+    'uid3',
+    'uid1',
+    '["2026-08-23", "2026-08-27"]'
+),
+
+(
+    'bazar4',
+    'ms2',
+    'uid4',
+    'uid4',
+    '["2026-08-21", "2026-08-28"]'
+),
+
+(
+    'bazar5',
+    'ms2',
+    'uid5',
+    'uid4',
+    '["2026-08-24", "2026-08-29"]'
+);

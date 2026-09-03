@@ -1,0 +1,280 @@
+-- =====================================================
+-- DATABASE
+-- =====================================================
+
+CREATE DATABASE IF NOT EXISTS messManagerDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE messManagerDB;
+
+
+-- =====================================================
+-- USERS
+-- =====================================================
+
+CREATE TABLE Users (
+    userId VARCHAR(50) PRIMARY KEY,
+
+    Email VARCHAR(150) NOT NULL UNIQUE,
+
+    Pass VARCHAR(255) NOT NULL,
+
+    Name VARCHAR(100) NOT NULL,
+
+    Phone VARCHAR(20),
+
+    DOB DATE,
+
+    Avater VARCHAR(255),
+
+    regDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- =====================================================
+-- MESSES
+-- =====================================================
+
+CREATE TABLE Messes (
+    messId VARCHAR(50) PRIMARY KEY,
+
+    createdBy VARCHAR(50) NOT NULL,
+
+    messName VARCHAR(150) NOT NULL,
+
+    Currency VARCHAR(10) DEFAULT 'BDT',
+	
+    autoTransferBalance BOOLEAN DEFAULT TRUE,
+
+    isMorningMeal BOOLEAN DEFAULT TRUE,
+
+    isLunchMeal BOOLEAN DEFAULT TRUE,
+
+    isDinnerMeal BOOLEAN DEFAULT TRUE,
+
+    mealCookTimeForMorning INT DEFAULT 7,
+
+    mealCookLastTimeForLunch INT DEFAULT 12,
+
+    mealCookLastTimeForNight INT DEFAULT 7,
+
+    messCreateDate DATE,
+
+    FOREIGN KEY (createdBy)
+        REFERENCES Users(userId)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+
+-- =====================================================
+-- MEMBER
+-- =====================================================
+
+CREATE TABLE Member (
+    messId VARCHAR(50) NOT NULL,
+
+    userId VARCHAR(50) NOT NULL,
+
+    Role VARCHAR(100) DEFAULT NULL,
+
+    messJoinDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    AddedBy VARCHAR(50),
+
+    prevMonthDue DECIMAL(10,2) DEFAULT 0,
+
+    PRIMARY KEY (messId, userId),
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (userId)
+        REFERENCES Users(userId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (AddedBy)
+        REFERENCES Users(userId)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+
+-- =====================================================
+-- EXPENSES
+-- =====================================================
+
+CREATE TABLE Expenses (
+    expenseId VARCHAR(20) PRIMARY KEY,
+
+    messId VARCHAR(50) NOT NULL,
+
+    amount DECIMAL(10,2) NOT NULL,
+
+    note VARCHAR(255),
+
+    costType VARCHAR(255) NOT NULL,
+
+    costDate DATE,
+
+    costBy VARCHAR(50) NOT NULL,
+
+    assignById VARCHAR(50),
+
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (costBy)
+        REFERENCES Users(userId)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (assignById)
+        REFERENCES Users(userId)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+
+-- =====================================================
+-- MEAL RECORD
+-- =====================================================
+
+CREATE TABLE MealRecord (
+    mealRecordId VARCHAR(20) PRIMARY KEY,
+
+    messId VARCHAR(50) NOT NULL,
+
+    userId VARCHAR(50) NOT NULL,
+
+    Morning DECIMAL(4,2) DEFAULT 0,
+
+    Lunch DECIMAL(4,2) DEFAULT 0,
+
+    Dinner DECIMAL(4,2) DEFAULT 0,
+
+    mealDate DATE,
+
+    mealAddedBy VARCHAR(50),
+
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (userId)
+        REFERENCES Users(userId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (mealAddedBy)
+        REFERENCES Users(userId)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+
+    UNIQUE (messId, userId, mealDate)
+);
+
+
+-- =====================================================
+-- FUNDS
+-- =====================================================
+
+CREATE TABLE Funds (
+    fundId VARCHAR(50) PRIMARY KEY,
+
+    messId VARCHAR(50) NOT NULL,
+
+    amount DECIMAL(10,2) NOT NULL,
+
+    note VARCHAR(300),
+
+    submitDate DATE,
+
+    submittedBy VARCHAR(50) NOT NULL,
+
+    receivedById VARCHAR(50),
+
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (submittedBy)
+        REFERENCES Users(userId)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (receivedById)
+        REFERENCES Users(userId)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+
+-- =====================================================
+-- ASSIGN BAZAR
+-- =====================================================
+
+CREATE TABLE AssignBazar (
+    bazarId VARCHAR(50) PRIMARY KEY,
+
+    messId VARCHAR(50) NOT NULL,
+
+    userId VARCHAR(50) NOT NULL,
+
+    assignBy VARCHAR(50),
+
+    bazarDates JSON,
+
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (userId)
+        REFERENCES Users(userId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (assignBy)
+        REFERENCES Users(userId)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+
+
+CREATE TABLE History (
+    historyId VARCHAR(50) PRIMARY KEY,
+    messId VARCHAR(50) NOT NULL,
+    month VARCHAR(20) NOT NULL,
+    totalMeal DECIMAL(10,2) DEFAULT 0,
+    totalExpense DECIMAL(10,2) DEFAULT 0,
+    mealRate DECIMAL(10,2) DEFAULT 0,
+    totalFund DECIMAL(10,2) DEFAULT 0,
+    totalDue DECIMAL(10,2) DEFAULT 0,
+
+    FOREIGN KEY (messId)
+        REFERENCES Messes(messId)
+        ON DELETE CASCADE
+);
