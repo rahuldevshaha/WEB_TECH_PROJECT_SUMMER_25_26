@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+#content_body {
+    background-color: #f7f9fa;
+    color: #374151;
+    padding: 30px 40px;
+    min-height: 100%;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.download-pdf-btn {
+    background-color: #ff5252;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.tab-nav {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 4px;
+    display: flex;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background-color: #ff5252;
+    color: #ffffff;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+
+.meal-table-container {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+table.meal-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table.meal-table th {
+    background-color: #f9fafb;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+}
+
+table.meal-table th:last-child {
+    border-right: none;
+}
+
+table.meal-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    vertical-align: top;
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+table.meal-table td:last-child {
+    border-right: none;
+}
+
+.member-meal-cell {
+    position: relative;
+}
+
+.cell-edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin-top: 8px;
+}
+
+
+.cost-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.cost-item-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.cost-card-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-badge {
+    width: 52px;
+    height: 52px;
+    border: 2px solid #f87171;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #374151;
+}
+
+.date-badge .day {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.date-badge .month {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.cost-info {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.cost-info strong {
+    color: #1f2937;
+}
+
+.cost-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.action-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+}
+
+
+.empty-state-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.empty-state-img {
+    max-width: 260px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.empty-state-text {
+    font-size: 16px;
+    color: #4b5563;
+    margin-bottom: 20px;
+}
+
+.primary-action-btn {
+    background-color: #ff5252;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background-color: #f7f9fa;
+    border-radius: 16px;
+    width: 92%;
+    max-width: 480px;
+    padding: 30px 24px 24px 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-card.center-content {
+    text-align: left;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 24px;
+}
+
+.modal-title-left {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+.modal-form-group {
+    margin-bottom: 18px;
+}
+
+.modal-form-group label {
+    display: block;
+    font-size: 13px;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #374151;
+    outline: none;
+}
+
+textarea.modal-input {
+    resize: vertical;
+    height: 90px;
+}
+
+.modal-btn-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-cancel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-black {
+    background-color: #18181b;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-question-illus {
+    text-align: center;
+    margin-bottom: 16px;
+}
