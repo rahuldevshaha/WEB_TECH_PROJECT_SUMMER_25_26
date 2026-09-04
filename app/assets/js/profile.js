@@ -1,23 +1,9 @@
-function switchLanguage(lang) {
-    var btnBn = document.getElementById('langBn');
-    var btnEn = document.getElementById('langEn');
-
-    if (lang === 'bn') {
-        if (btnBn) btnBn.classList.add('active');
-        if (btnEn) btnEn.classList.remove('active');
-    } else {
-        if (btnEn) btnEn.classList.add('active');
-        if (btnBn) btnBn.classList.remove('active');
-    }
-}
-
 function triggerAvatarUpload() {
     var fileInput = document.getElementById('avatarFileInput');
     if (fileInput) {
         fileInput.click();
     }
 }
-
 
 var originalNameValue = '';
 var originalPhoneValue = '';
@@ -32,7 +18,6 @@ function enterEditMode() {
     var phoneDisplay = document.getElementById('phoneDisplay');
     var phoneInput = document.getElementById('phoneInput');
     var avatarBadge = document.getElementById('avatarEditBadge');
-    var editControls = document.getElementById('editControls');
     var saveControls = document.getElementById('saveControls');
 
     if (nameInput) originalNameValue = nameInput.value;
@@ -45,9 +30,9 @@ function enterEditMode() {
     if (phoneInput) phoneInput.style.display = 'inline-block';
 
     if (avatarBadge) avatarBadge.style.display = 'flex';
-
-    if (editControls) editControls.style.display = 'none';
     if (saveControls) saveControls.style.display = 'flex';
+
+    nameInput.focus();
 }
 
 function cancelEditMode() {
@@ -56,7 +41,6 @@ function cancelEditMode() {
     var phoneDisplay = document.getElementById('phoneDisplay');
     var phoneInput = document.getElementById('phoneInput');
     var avatarBadge = document.getElementById('avatarEditBadge');
-    var editControls = document.getElementById('editControls');
     var saveControls = document.getElementById('saveControls');
 
     if (nameInput) nameInput.value = originalNameValue;
@@ -74,8 +58,6 @@ function cancelEditMode() {
     if (phoneInput) phoneInput.style.display = 'none';
 
     if (avatarBadge) avatarBadge.style.display = 'none';
-
-    if (editControls) editControls.style.display = 'flex';
     if (saveControls) saveControls.style.display = 'none';
 }
 
@@ -92,8 +74,25 @@ function previewAvatar(input) {
     reader.readAsDataURL(input.files[0]);
 }
 
-function handleLogout() {
-    if (confirm('Are you sure you want to logout?')) {
-        window.location.href = 'login.php';
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.classList.add('active');
     }
 }
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        modal.classList.remove('active');
+    }
+}
+
+window.addEventListener('click', function(e) {
+    if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
+        e.target.style.display = 'none';
+        e.target.classList.remove('active');
+    }
+});

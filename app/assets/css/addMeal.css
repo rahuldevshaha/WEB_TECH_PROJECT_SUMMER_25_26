@@ -17,7 +17,7 @@
 
 .main-container {
     width: 100%;
-    max-width: 520px;
+    max-width: 600px;
 }
 
 
@@ -376,4 +376,831 @@
 
 .switch .slider.round:before {
     border-radius: 50%;
+}
+
+/* Premium meal summary + booked-meal table */
+.section-label-row {
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #252a31;
+    letter-spacing: .1px;
+}
+
+.section-subtitle {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    color: #98a1ad;
+}
+
+.edit-icon-btn {
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    border: 1px solid #e9edf2;
+    border-radius: 10px;
+    color: #59636f;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(24, 32, 43, .05);
+    transition: .2s ease;
+}
+
+.edit-icon-btn:hover {
+    color: #ff5252;
+    border-color: #ffd0d0;
+    transform: translateY(-1px);
+}
+
+.today-meal-card,
+.meal-table-card {
+    background: #fff;
+    border: 1px solid #e9edf2;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(30, 41, 59, .055);
+    overflow: hidden;
+}
+
+.today-meal-card {
+    margin-bottom: 24px;
+}
+
+.today-meal-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid #f0f2f5;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+}
+
+.today-meal-card-head h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #252a31;
+}
+
+.today-meal-card-head p {
+    margin: 4px 0 0;
+    font-size: 11px;
+    color: #9aa2ad;
+}
+
+.today-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: #fff1f1;
+    color: #ef4b4b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.today-meal-list {
+    padding: 0 16px;
+}
+
+.today-meal-row {
+    min-height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border-bottom: 1px solid #f1f3f6;
+}
+
+.today-meal-row:last-child {
+    border-bottom: 0;
+}
+
+.today-member-info {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.today-avatar {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f4f6f8;
+    color: #5b6570;
+    font-size: 13px;
+    font-weight: 800;
+    border: 1px solid #e9edf1;
+}
+
+.today-member-name {
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #303740;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.today-member-label {
+    margin-top: 2px;
+    color: #a0a7b0;
+    font-size: 10px;
+}
+
+.meal-code-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.meal-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid #e8ebef;
+    background: #fafbfc;
+    color: #4a535e;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.breakfast-code { background: #fffaf0; border-color: #f4e6c3; color: #9a6b16; }
+.lunch-code { background: #f2fbf6; border-color: #d9eee1; color: #347652; }
+.dinner-code { background: #f5f4ff; border-color: #e3e0f5; color: #62588f; }
+
+.today-empty-state {
+    min-height: 150px;
+    padding: 24px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 9px;
+    border-radius: 12px;
+    background: #f7f8fa;
+    font-size: 20px;
+}
+
+.today-empty-state strong {
+    color: #4b5563;
+    font-size: 13px;
+}
+
+.today-empty-state span {
+    margin-top: 4px;
+    color: #a0a7b0;
+    font-size: 10px;
+}
+
+/* Keep Already Booked Meal behavior unchanged; only upgrade its presentation. */
+.booked-filter-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #e9edf2;
+    border-radius: 16px;
+    box-shadow: 0 7px 20px rgba(30, 41, 59, .045);
+}
+
+.booked-filter-form .filter-group {
+    min-width: 0;
+}
+
+.booked-filter-form label {
+    display: block;
+    margin: 0 0 6px 2px;
+    color: #69727d;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.booked-filter-form .form-control {
+    height: 42px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.booked-filter-form .filter-btn {
+    grid-column: 1 / -1;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.booked-meal-card {
+    margin-top: 0;
+}
+
+.meal-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.meal-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 12px;
+}
+
+.meal-table th {
+    padding: 12px 14px;
+    background: #fafbfc;
+    border-bottom: 1px solid #e9edf2;
+    color: #7b848f;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.meal-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #f0f2f5;
+    color: #4b5563;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.meal-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.meal-table tbody tr {
+    transition: background .15s ease;
+}
+
+.meal-table tbody tr:hover {
+    background: #fcfcfd;
+}
+
+.meal-table td:not(:nth-child(1)) {
+    text-align: center;
+}
+
+.booked-meal-table th,
+.booked-meal-table td {
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.booked-meal-table td:first-child {
+    color: #7a838e;
+    font-variant-numeric: tabular-nums;
+}
+
+.booked-meal-table td:nth-child(2) {
+    color: #303740;
+    font-weight: 700;
+}
+
+.empty-table-cell {
+    padding: 32px 15px !important;
+    text-align: center !important;
+    color: #9aa2ad !important;
+    font-weight: 500 !important;
+}
+
+@media (max-width: 620px) {
+    .today-meal-row {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 13px 0;
+    }
+
+    .meal-code-list {
+        justify-content: flex-start;
+        padding-left: 47px;
+    }
+
+    .booked-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .booked-filter-form .filter-btn {
+        grid-column: auto;
+    }
+}
+
+/* Add Meal button - placed above Today's Meals table */
+.add-meal-top-btn {
+    width: 100%;
+    margin: 18px 0 16px;
+}
+
+
+/* ============================================================
+   ADD MEAL BUTTON
+   ============================================================ */
+
+.add-meal-top-btn {
+    width: 100%;
+    margin: 18px 0 16px;
+}
+
+
+/* ============================================================
+   ALREADY BOOKED MEAL
+   ============================================================ */
+
+.booked-meal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.booked-meal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.booked-meal-header p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.booked-meal-total {
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #f5f6f8;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* DATE CELL */
+
+.booked-date-cell {
+    min-width: 125px;
+    width: 125px;
+    vertical-align: middle !important;
+    text-align: center;
+    border-right: 1px solid #e5e7eb;
+}
+
+.booked-date-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 70px;
+}
+
+.booked-date-content strong {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.booked-date-content span {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+
+/* PAST = RED */
+
+.booked-date-cell.date-past {
+    background: #fff1f2;
+    color: #dc2626;
+    border-left: 4px solid #ef4444;
+}
+
+.booked-date-cell.date-past
+.booked-date-content span {
+    color: #ef4444;
+}
+
+
+/* TODAY = GREEN */
+
+.booked-date-cell.date-today {
+    background: #ecfdf5;
+    color: #059669;
+    border-left: 4px solid #10b981;
+}
+
+.booked-date-cell.date-today
+.booked-date-content span {
+    color: #10b981;
+}
+
+
+/* UPCOMING = YELLOW */
+
+.booked-date-cell.date-upcoming {
+    background: #fffbeb;
+    color: #d97706;
+    border-left: 4px solid #f59e0b;
+}
+
+.booked-date-cell.date-upcoming
+.booked-date-content span {
+    color: #d97706;
+}
+
+
+/* MEMBER */
+
+.booked-member-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booked-member-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f5f9;
+    color: #475569;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.booked-member-cell span {
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* MEAL STATUS */
+
+.meal-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 32px;
+    height: 28px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.meal-status.booked {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.meal-status.empty {
+    background: #f3f4f6;
+    color: #9ca3af;
+}
+
+
+/* TABLE HOVER */
+
+.booked-meal-table tbody tr {
+    transition: background .2s ease;
+}
+
+.booked-meal-table tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .booked-meal-header {
+        padding: 16px;
+    }
+
+    .booked-meal-header h3 {
+        font-size: 16px;
+    }
+
+    .booked-date-cell {
+        min-width: 100px;
+        width: 100px;
+    }
+
+    .booked-date-content strong {
+        font-size: 11px;
+    }
+
+    .booked-member-cell {
+        gap: 7px;
+    }
+
+    .booked-member-avatar {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        font-size: 11px;
+    }
+
+}  /* =========================================================
+   ADD MEAL BUTTON - ABOVE TODAY'S MEALS
+========================================================= */
+
+.add-meal-top-btn {
+    width: 100%;
+    margin: 18px 0 16px;
+}
+
+
+/* =========================================================
+   BOOKED MEAL FILTER
+========================================================= */
+
+.booked-meal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+
+.booked-filter-form {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+
+.booked-filter-form .filter-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+
+.booked-filter-form .filter-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/*
+ * Filter button intentionally removed.
+ */
+
+
+/* =========================================================
+   BOOKED DATE CELL
+========================================================= */
+
+.booked-date-cell {
+    min-width: 125px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+
+.booked-date-main {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+
+.booked-date-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+
+/* =========================================================
+   DATE STATUS COLORS
+========================================================= */
+
+.date-past {
+    color: #c0392b;
+    background: rgba(231, 76, 60, .08);
+}
+
+
+.date-past .booked-date-status {
+    color: #c0392b;
+    background: rgba(231, 76, 60, .14);
+}
+
+
+.date-today {
+    color: #198754;
+    background: rgba(25, 135, 84, .08);
+}
+
+
+.date-today .booked-date-status {
+    color: #198754;
+    background: rgba(25, 135, 84, .14);
+}
+
+
+.date-upcoming {
+    color: #a66a00;
+    background: rgba(255, 193, 7, .12);
+}
+
+
+.date-upcoming .booked-date-status {
+    color: #8a5a00;
+    background: rgba(255, 193, 7, .22);
+}
+
+
+/* =========================================================
+   BOOKED MEMBER
+========================================================= */
+
+.booked-member-cell {
+    min-width: 170px;
+}
+
+
+.booked-member-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.booked-member-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    background: rgba(99, 102, 241, .1);
+    color: #6366f1;
+}
+
+
+.booked-member-wrap > span {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MEAL STATUS
+========================================================= */
+
+.meal-status {
+    display: inline-flex;
+
+    min-width: 32px;
+    height: 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.meal-status.booked {
+    background: rgba(25, 135, 84, .10);
+    color: #198754;
+}
+
+
+.meal-status.empty {
+    background: rgba(108, 117, 125, .08);
+    color: #8a8f98;
+}
+
+
+/* =========================================================
+   BOOKED TABLE
+========================================================= */
+
+.booked-meal-table td {
+    vertical-align: middle;
+}
+
+
+.booked-meal-table th {
+    white-space: nowrap;
+}
+
+
+.booked-meal-table tbody tr {
+    transition: background .15s ease;
+}
+
+
+.booked-meal-table tbody tr:hover {
+    background: rgba(99, 102, 241, .025);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .booked-filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .booked-filter-form .filter-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    .booked-meal-table {
+        min-width: 650px;
+    }
+
+
+    .meal-table-wrap {
+        overflow-x: auto;
+    }
+
+
+    .booked-date-cell {
+        min-width: 110px;
+    }
+
+
+    .booked-member-cell {
+        min-width: 150px;
+    }
+
 }

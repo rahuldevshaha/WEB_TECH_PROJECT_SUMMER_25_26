@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            
+
             <button type="submit" class="btn-submit">Add Deposit</button>
         </form>
     </div>
@@ -85,7 +85,7 @@
 
 
 
-
+<script src="/app/assets/js/addDeposit.js"></script>
 
 
 

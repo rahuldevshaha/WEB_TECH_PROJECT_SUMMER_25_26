@@ -264,15 +264,25 @@ CREATE TABLE AssignBazar (
 
 
 
+-- =====================================================
+-- Mess History
+-- =====================================================
+
 CREATE TABLE History (
     historyId VARCHAR(50) PRIMARY KEY,
     messId VARCHAR(50) NOT NULL,
     month VARCHAR(20) NOT NULL,
+
+    totalMember INT DEFAULT 0,
     totalMeal DECIMAL(10,2) DEFAULT 0,
     totalExpense DECIMAL(10,2) DEFAULT 0,
     mealRate DECIMAL(10,2) DEFAULT 0,
     totalFund DECIMAL(10,2) DEFAULT 0,
     totalDue DECIMAL(10,2) DEFAULT 0,
+
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
 
     FOREIGN KEY (messId)
         REFERENCES Messes(messId)
