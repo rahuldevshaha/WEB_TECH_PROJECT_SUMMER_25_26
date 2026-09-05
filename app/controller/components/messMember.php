@@ -5,19 +5,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if(empty($messId)){
     header("Location: ../home.php");
@@ -208,6 +196,10 @@ if(reqMethodCheck("POST")){
 
                     if($result){
                         $msg = "Member Added Successfully!";
+                        $showSuccessModal = true;
+                        $successTitle = "Member Added!";
+                        $successSubtitle = "Member has been added to mess. Default password: 12345, ask them to change it after logging in.";
+                        $successAddMore = true;
                         ResetAllField();
                     }else{
                         $isErr = true;
@@ -236,6 +228,9 @@ if(reqMethodCheck("POST")){
 
                 if($result){
                     $msg = "Member Removed Successfully!";
+                    $showSuccessModal = true;
+                    $successTitle = "Member Removed!";
+                    $successSubtitle = "Member has been removed from the mess.";
                 }else{
                     $isErr = true;
                     $errorMessage = "Failed To Remove Member!";
@@ -348,6 +343,11 @@ if(reqMethodCheck("POST")){
                     $msg = $conflictFound
                         ? "Bazar Dates Updated! (Some Selected Dates Were Already Assigned To Another Member, So Those Were Skipped)"
                         : "Bazar Dates Updated Successfully!";
+                    $showSuccessModal = true;
+                    $successTitle = "Bazar Dates Updated!";
+                    $successSubtitle = $conflictFound
+                        ? "Some selected dates were already assigned to another member, so those were skipped."
+                        : "Bazar dates have been updated successfully.";
                 }else{
                     $isErr = true;
                     $errorMessage = "Failed To Assign Bazar Dates!";
@@ -406,6 +406,9 @@ if(reqMethodCheck("POST")){
 
                     if($result){
                         $msg = "Upcoming Bazar Dates Removed! (Past Dates Are Kept As History)";
+                        $showSuccessModal = true;
+                        $successTitle = "Bazar Dates Removed!";
+                        $successSubtitle = "Upcoming bazar dates were removed. Past dates are kept as history.";
                     }else{
                         $isErr = true;
                         $errorMessage = "Failed To Remove Bazar Dates!";

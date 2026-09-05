@@ -6,21 +6,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 $userId = getSessionValue("userId");
 
-
-
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if(empty($messId)){
     header("Location: ../home.php");
@@ -47,6 +33,7 @@ $member = "";
 $isErr = false;
 $errorMessage = "";
 $msg = "";
+$showSuccessModal = false;
 
 
 function ResetAllField(){
@@ -111,6 +98,7 @@ if(reqMethodCheck("POST")){
         if($result){
             $isSuccess = true;
             $msg = "Deposit Added Successfully!";
+            $showSuccessModal = true;
             ResetAllField();
         }else{
             $isErr = true;

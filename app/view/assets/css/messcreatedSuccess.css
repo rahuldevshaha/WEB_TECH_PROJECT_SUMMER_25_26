@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+body {
+  background-color: #e5e7eb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-card {
+  background-color: #f7f9fa;
+  border-radius: 16px;
+  width: 92%;
+  max-width: 520px;
+  padding: 35px 30px 28px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+
+.modal-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 23px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.modal-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.modal-btn-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-ok-great {
+  background-color: #18181b;
+  border: none;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.1s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ok-great:hover {
+  background-color: #27272a;
+}
+
+.btn-ok-great:active {
+  transform: scale(0.98);
+}

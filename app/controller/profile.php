@@ -9,9 +9,9 @@ $isErr = false;
 $errorMessage = "";
 $msg = "";
 
-// -------------------------------------------------------------
-// 1. UPDATE PROFILE INFO (Name, Phone, Avatar)
-// -------------------------------------------------------------
+
+
+
 if(reqMethodCheck("POST") && isset($_POST["update_profile_submit"])){
 
     $name  = trim(getValueFromReq("POST", "profile_name"));
@@ -48,7 +48,7 @@ if(reqMethodCheck("POST") && isset($_POST["update_profile_submit"])){
             $destPath = $uploadDir . $newFileName;
 
             if(move_uploaded_file($_FILES["profile_avatar"]["tmp_name"], $destPath)){
-                $avatarPath = addslashes("/app/assets/uploads/avatars/" . $newFileName);
+                $avatarPath = addslashes("/app/view/assets/uploads/avatars/" . $newFileName);
                 $avatarSetClause = ", Avater='$avatarPath'";
             } else {
                 $isErr = true;
@@ -74,9 +74,9 @@ if(reqMethodCheck("POST") && isset($_POST["update_profile_submit"])){
     }
 }
 
-// -------------------------------------------------------------
-// 2. CHANGE EMAIL (With Old Password Confirmation)
-// -------------------------------------------------------------
+
+
+
 if(reqMethodCheck("POST") && isset($_POST["update_email_submit"])){
     $newEmail = trim(getValueFromReq("POST", "new_email"));
     $oldPass  = getValueFromReq("POST", "old_password_email");
@@ -119,9 +119,9 @@ if(reqMethodCheck("POST") && isset($_POST["update_email_submit"])){
     }
 }
 
-// -------------------------------------------------------------
-// 3. CHANGE PASSWORD (With Old Password Confirmation)
-// -------------------------------------------------------------
+
+
+
 if(reqMethodCheck("POST") && isset($_POST["update_password_submit"])){
     $oldPass = getValueFromReq("POST", "old_password");
     $newPass = getValueFromReq("POST", "new_password");
@@ -158,7 +158,7 @@ if(reqMethodCheck("POST") && isset($_POST["update_password_submit"])){
     }
 }
 
-// Fetch user data for the view
+
 $sqlQ = "SELECT Name, Email, Phone, Avater FROM Users WHERE userId='$userId'";
 $result = exeQuery($sqlQ);
 $userRow = getDataRow($result);

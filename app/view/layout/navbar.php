@@ -22,7 +22,7 @@ if(!empty($userId)){
         <div class="logo_section">
             <div  class="logo_wrapper">
                 <a href="/app/view/home.php">
-                    <img src="/app/assets/images/messManagerLogo.png" class="nav-logo" alt="logo">
+                    <img src="/app/view/assets/images/messManagerLogo.png" class="nav-logo" alt="logo">
                 </a>
             </div>
         </div>
@@ -30,19 +30,19 @@ if(!empty($userId)){
         <div class="nav_items">
 
             <a href="/app/view/home.php" class="nav_item">
-                <img src="/app/assets/images/home.svg" alt="">
+                <img src="/app/view/assets/images/home.svg" alt="">
             </a>
             <a href="/app/view/faq.php" class="nav_item">
-                <img src="/app/assets/images/support.svg" alt="">
+                <img src="/app/view/assets/images/support.svg" alt="">
             </a>
             <a href="/app/view/notification.php" class="nav_item">
-                <img src="/app/assets/images/notification.svg" alt="">
+                <img src="/app/view/assets/images/notification.svg" alt="">
             </a>
             <a href="/app/controller/profile.php" class="nav_item">
-                <img src="/app/assets/images/profile.svg" alt="">
+                <img src="/app/view/assets/images/profile.svg" alt="">
             </a>
             <a href="/app/controller/components/messSetting.php" class="nav_item">
-                <img src="/app/assets/images/settingRed.svg" alt="">
+                <img src="/app/view/assets/images/settingRed.svg" alt="">
             </a>
 
         </div>
@@ -53,7 +53,7 @@ if(!empty($userId)){
 
     <div class="avater_wrapper">
         <a href="/app/controller/profile.php">
-            <img src="/app/assets/images/defaultAvater.png" alt="avater">
+            <img src="/app/view/assets/images/defaultAvater.png" alt="avater">
         </a>
     </div>
 </div>

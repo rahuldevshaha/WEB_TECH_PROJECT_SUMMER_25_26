@@ -7,18 +7,7 @@ include_once "../../utils/securityValidation.php";
 ProtectedRequest("../login/socialLogin.php");
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if (empty($messId)) {
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId' LIMIT 1";
-    $result = exeQuery($sqlQ);
-
-    if ($result && getRowCount($result) > 0) {
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if (empty($messId)) {
     echo '<script>window.location.href = "../home.php";</script>';

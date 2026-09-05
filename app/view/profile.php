@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/app/assets/css/home.css">
-<link rel="stylesheet" href="/app/assets/css/profile.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="/app/view/assets/css/home.css">
+<link rel="stylesheet" href="/app/view/assets/css/profile.css?v=<?php echo time(); ?>">
 
 <div id="home_page">
     <div class="nav"><?php include __DIR__ . "/layout/navbar.php"; ?></div>
@@ -36,11 +36,11 @@
                                     </svg>
                                 <?php endif; ?>
                             </div>
-                            <button type="button" class="avatar-edit-badge" id="avatarEditBadge" onclick="triggerAvatarUpload()" title="Change Profile Picture" style="display:none;">
+                            <!-- <button type="button" class="avatar-edit-badge" id="avatarEditBadge" onclick="triggerAvatarUpload()" title="Change Profile Picture" style="display:none;">
                                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                 </svg>
-                            </button>
+                            </button> -->
                             <input type="file" id="avatarFileInput" name="profile_avatar" style="display: none;" accept="image/*" onchange="previewAvatar(this)">
                         </div>
 
@@ -72,7 +72,7 @@
                         </div>
                     </form>
 
-                    <!-- Account Settings -->
+                    
                     <div class="profile-section">
                         <h4 class="section-heading">Account Settings</h4>
                         <ul class="info-list">
@@ -104,6 +104,21 @@
                                     <span class="item-text">Change Password</span>
                                 </button>
                             </li>
+                            <li class="info-item">
+                                <a href="/app/view/ComingSoon.php" style="text-decoration:none; width:100%;">
+                                    <button type="button" class="info-link-btn">
+                                        <span class="item-icon icon-coral">
+                                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="17 1 21 5 17 9"></polyline>
+                                                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                                <polyline points="7 23 3 19 7 15"></polyline>
+                                                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="item-text">Switch Mess</span>
+                                    </button>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
@@ -118,9 +133,9 @@
     </div>
 </div>
 
-<!-- ============================================================== -->
-<!-- EDIT EMAIL MODAL: Current Email, New Email, Current Password   -->
-<!-- ============================================================== -->
+
+
+
 <div id="editEmailModal" class="modal-backdrop" style="display: none;">
     <div class="modal-card">
         <div class="modal-illustration">
@@ -171,9 +186,9 @@
     </div>
 </div>
 
-<!-- ============================================================== -->
-<!-- EDIT PASSWORD MODAL: Current Password, New Password           -->
-<!-- ============================================================== -->
+
+
+
 <div id="editPasswordModal" class="modal-backdrop" style="display: none;">
     <div class="modal-card">
         <div class="modal-illustration">
@@ -219,4 +234,4 @@
     </div>
 </div>
 
-<script src="/app/assets/js/profile.js?v=<?php echo time(); ?>"></script>
+<script src="/app/view/assets/js/profile.js?v=<?php echo time(); ?>"></script>

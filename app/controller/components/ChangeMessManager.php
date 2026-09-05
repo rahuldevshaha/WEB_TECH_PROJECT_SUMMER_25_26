@@ -5,19 +5,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if(empty($messId)){
     header("Location: ../home.php");
@@ -40,6 +28,7 @@ if($myRole != "Manager"){
 $isErr = false;
 $errorMessage = "";
 $msg = "";
+$showSuccessModal = false;
 
 
 if(reqMethodCheck("POST")){
@@ -78,6 +67,7 @@ if(reqMethodCheck("POST")){
 
                 if($result){
                     $msg = "Mess Manager Changed Successfully!";
+                    $showSuccessModal = true;
                     
                     $myRole = "Member";
                 }else{

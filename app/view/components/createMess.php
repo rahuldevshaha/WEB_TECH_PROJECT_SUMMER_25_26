@@ -1,6 +1,7 @@
+<link rel="stylesheet" href="/app/view/assets/css/successPopups.css">
 
-    <link rel="stylesheet" href="/app/assets/css/createMess.css">
-    <link rel="stylesheet" href="/app/assets/css/home.css">
+    <link rel="stylesheet" href="/app/view/assets/css/createMess.css">
+    <link rel="stylesheet" href="/app/view/assets/css/home.css">
 
 
 
@@ -70,41 +71,75 @@
 
 
                     
-                    <div id="successModal" class="modal-overlay <?php if($showModal) echo 'active'; ?>">
-                        <div class="modal-card">
-                            <div class="modal-illustration">
-                                
-                                <svg viewBox="0 0 200 200" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="100" cy="100" r="65" fill="#D2F3DE" />
-                                    
-                                    <circle cx="45" cy="65" r="14" fill="#69E299" opacity="0.6"/>
-                                    <circle cx="155" cy="65" r="14" fill="#69E299" opacity="0.6"/>
-                                    <circle cx="45" cy="135" r="14" fill="#69E299" opacity="0.6"/>
-                                    <circle cx="155" cy="135" r="14" fill="#69E299" opacity="0.6"/>
-                                    
-                                    <ellipse cx="100" cy="175" rx="35" ry="10" fill="#E2E8F0" />
-                                    <rect x="90" y="115" width="20" height="45" fill="#202938" rx="4"/>
-                                    <polygon points="80,85 120,85 110,120 90,120" fill="#4ADE80" />
-                                    <polygon points="98,85 102,85 104,115 96,115" fill="#FACC15" />
-                                    <circle cx="100" cy="68" r="14" fill="#FFD8B3" />
-                                    <path d="M 88 65 Q 100 50 112 65 Q 108 55 92 56 Z" fill="#2D3748" />
-                                </svg>
-                            </div>
-                            
-                            <h3 class="modal-title">আপনাদের মেস সফলভাবে খোলা হয়েছে!</h3>
-                            <p class="modal-subtitle">Mess created successfully</p>
-                            
-                            <div class="modal-actions">
-                                <a href="../home.php" class="modal-btn" data-url="home">Ok, Great</a>
-                            </div>
-                    </div>
-
+                    <?php if (!empty($showModal)): ?><div class="success-popup"><div id="messSuccessModal" class="modal-overlay active">
+        <div class="modal-card">
+            
+            <div class="modal-illustration">
+                <svg viewBox="0 0 240 200" width="200" height="170" xmlns="http://www.w3.org/2000/svg">
+                    
+                    <circle cx="120" cy="100" r="70" fill="#dcfce7" />
+                    
+                    
+                    
+                    <g transform="translate(60, 45)">
+                        <rect x="0" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M 12 14 C 18 14, 22 10, 24 4 C 26 0, 29 2, 28 8 L 27 14 L 32 14 C 35 14, 35 18, 33 20 C 35 21, 35 24, 32 25 C 34 26, 33 29, 30 29 L 12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(155, 45) scale(-1, 1)">
+                        <rect x="-24" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M -12 14 C -6 14, -2 10, 0 4 C 2 0, 5 2, 4 8 L 3 14 L 8 14 C 11 14, 11 18, 9 20 C 11 21, 11 24, 8 25 C 10 26, 9 29, 6 29 L -12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(62, 115)">
+                        <rect x="0" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M 12 14 C 18 14, 22 10, 24 4 C 26 0, 29 2, 28 8 L 27 14 L 32 14 C 35 14, 35 18, 33 20 C 35 21, 35 24, 32 25 C 34 26, 33 29, 30 29 L 12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(155, 115) scale(-1, 1)">
+                        <rect x="-24" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M -12 14 C -6 14, -2 10, 0 4 C 2 0, 5 2, 4 8 L 3 14 L 8 14 C 11 14, 11 18, 9 20 C 11 21, 11 24, 8 25 C 10 26, 9 29, 6 29 L -12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
 
                     
+                    <ellipse cx="120" cy="180" rx="35" ry="7" fill="#e2e8f0" />
 
+                    
+                    
+                    <path d="M 112 110 L 118 110 L 115 175 L 108 175 Z" fill="#1e293b"/>
+                    <path d="M 122 110 L 128 110 L 132 175 L 125 175 Z" fill="#1e293b"/>
+                    
+                    <ellipse cx="106" cy="176" rx="6" ry="3" fill="#0f172a"/>
+                    <ellipse cx="134" cy="176" rx="6" ry="3" fill="#0f172a"/>
 
+                    
+                    <polygon points="105,75 135,75 130,115 110,115" fill="#4ade80" />
+                    
+                    <polygon points="118,78 122,78 123,108 117,108" fill="#eab308" />
+                    
+                    <path d="M 105 78 L 94 95 L 102 98 L 110 85" fill="#4ade80"/>
+                    <path d="M 135 78 L 146 95 L 138 98 L 130 85" fill="#4ade80"/>
 
-                    </div>
+                    
+                    <circle cx="120" cy="62" r="10" fill="#fed7aa" />
+                    <path d="M 112 60 Q 120 48 128 60 Q 126 52 115 54 Z" fill="#1e293b" />
+                </svg>
+            </div>
+
+            
+            <h2 class="modal-title">আপনাদের মেস সফলভাবে খোলা হয়েছে!</h2>
+            <p class="modal-subtitle">Mess created successfully</p>
+
+            
+            <div class="modal-btn-row">
+                <button type="button" class="btn-ok-great" onclick="redirectToDashboard()">Ok, Great</button>
+            </div>
+        </div>
+    </div><script>
+        function redirectToDashboard() {
+            window.location.href = '../home.php';
+        }
+    </script></div><?php endif; ?>
 
 
                     
@@ -119,5 +154,71 @@
 
     </div>
 
+    
+<?php if (!empty($showDeleteSuccessModal)): ?><div class="success-popup"><div id="deleteSuccessModal" class="modal-overlay active">
+        <div class="modal-card">
+            
+            <div class="modal-illustration">
+                <svg viewBox="0 0 240 200" width="200" height="170" xmlns="http://www.w3.org/2000/svg">
+                    
+                    <circle cx="120" cy="100" r="70" fill="#dcfce7" />
+                    
+                    
+                    
+                    <g transform="translate(60, 45)">
+                        <rect x="0" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M 12 14 C 18 14, 22 10, 24 4 C 26 0, 29 2, 28 8 L 27 14 L 32 14 C 35 14, 35 18, 33 20 C 35 21, 35 24, 32 25 C 34 26, 33 29, 30 29 L 12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(155, 45) scale(-1, 1)">
+                        <rect x="-24" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M -12 14 C -6 14, -2 10, 0 4 C 2 0, 5 2, 4 8 L 3 14 L 8 14 C 11 14, 11 18, 9 20 C 11 21, 11 24, 8 25 C 10 26, 9 29, 6 29 L -12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(62, 115)">
+                        <rect x="0" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M 12 14 C 18 14, 22 10, 24 4 C 26 0, 29 2, 28 8 L 27 14 L 32 14 C 35 14, 35 18, 33 20 C 35 21, 35 24, 32 25 C 34 26, 33 29, 30 29 L 12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
+                    
+                    <g transform="translate(155, 115) scale(-1, 1)">
+                        <rect x="-24" y="8" width="12" height="18" fill="#4ade80" rx="2"/>
+                        <path d="M -12 14 C -6 14, -2 10, 0 4 C 2 0, 5 2, 4 8 L 3 14 L 8 14 C 11 14, 11 18, 9 20 C 11 21, 11 24, 8 25 C 10 26, 9 29, 6 29 L -12 29 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+                    </g>
 
+                    
+                    <ellipse cx="120" cy="180" rx="35" ry="7" fill="#e2e8f0" />
 
+                    
+                    <path d="M 112 110 L 118 110 L 115 175 L 108 175 Z" fill="#1e293b"/>
+                    <path d="M 122 110 L 128 110 L 132 175 L 125 175 Z" fill="#1e293b"/>
+                    <ellipse cx="106" cy="176" rx="6" ry="3" fill="#0f172a"/>
+                    <ellipse cx="134" cy="176" rx="6" ry="3" fill="#0f172a"/>
+
+                    
+                    <polygon points="105,75 135,75 130,115 110,115" fill="#4ade80" />
+                    <polygon points="118,78 122,78 123,108 117,108" fill="#eab308" />
+                    <path d="M 105 78 L 94 95 L 102 98 L 110 85" fill="#4ade80"/>
+                    <path d="M 135 78 L 146 95 L 138 98 L 130 85" fill="#4ade80"/>
+
+                    
+                    <circle cx="120" cy="62" r="10" fill="#fed7aa" />
+                    <path d="M 112 60 Q 120 48 128 60 Q 126 52 115 54 Z" fill="#1e293b" />
+                </svg>
+            </div>
+
+            
+            <h2 class="modal-title">সফল ভাবে মেস এবং সকল হিসাব ডিলেট হয়ে গেছে!</h2>
+
+            
+            <div class="modal-btn-row">
+                <button type="button" class="btn-close" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div><script>
+        function closeModal() {
+            document.getElementById('deleteSuccessModal').classList.remove('active');
+            window.location.href = 'createMess.php';
+        }
+    </script>
+
+</div><?php endif; ?>

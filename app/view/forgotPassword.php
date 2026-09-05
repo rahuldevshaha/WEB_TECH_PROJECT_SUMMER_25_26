@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="../assets/css/forgotPassword.css">
+    <link rel="stylesheet" href="/app/view/assets/css/forgotPassword.css">
 </head>
  
 <body>
@@ -15,7 +15,7 @@
             <form method="post">
  
                 <div class="logo_wrapper">
-                    <img src="../assets/images/messManagerLogo.png">
+                    <img src="/app/view/assets/images/messManagerLogo.png">
                 </div>
  
                 <div class="title">
@@ -43,7 +43,7 @@
     </div>
 	
 
-     <script src="../assets/js/forgotPassword.js"></script>
+     <script src="/app/view/assets/js/forgotPassword.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
     <head>
         <title>Dashboard Page</title>
-        <link rel="stylesheet" href="../assets/css/home.css">
-        <link rel="stylesheet" href="../assets/css/layoutFile.css">
+        <link rel="stylesheet" href="/app/view/assets/css/home.css">
+        <link rel="stylesheet" href="/app/view/assets/css/layoutFile.css">
 
 
     </head>
@@ -33,6 +33,6 @@
 
 
 
-    <script src="../assets/js/home.js"></script>
+    <script src="/app/view/assets/js/home.js"></script>
     </body>
 </html>

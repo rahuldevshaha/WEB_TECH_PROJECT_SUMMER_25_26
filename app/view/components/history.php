@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/app/assets/css/home.css">
-<link rel="stylesheet" href="/app/assets/css/history.css">
+<link rel="stylesheet" href="/app/view/assets/css/home.css">
+<link rel="stylesheet" href="/app/view/assets/css/history.css">
 
 <div id="home_page">
     <div class="nav">
@@ -182,4 +182,4 @@
     </div>
 </div>
 
-<script src="/app/assets/js/history.js"></script>
+<script src="/app/view/assets/js/history.js"></script>

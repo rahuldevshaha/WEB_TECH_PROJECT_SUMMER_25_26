@@ -51,7 +51,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support & FAQ</title>
-    <link rel="stylesheet" href="/app/assets/css/layoutFile.css">
+    <link rel="stylesheet" href="/app/view/assets/css/layoutFile.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -216,7 +216,7 @@
    
     <main class="faq-page-container">
         <div class="faq-header-card">
-            <img src="/app/assets/images/messManagerLogo.png" alt="Support Logo" class="faq-support-icon" onerror="this.src='/app/assets/images/support.svg'">
+            <img src="/app/view/assets/images/messManagerLogo.png" alt="Support Logo" class="faq-support-icon" onerror="this.src='/app/view/assets/images/support.svg'">
             <h4 class="faq-title-red">Support</h4>
             <p class="faq-sub-txt">Facing Any Problem?</p>
             <a href="https://facebook.com" target="_blank" class="btn-contact-black">আমাদের সাথে যোগাযোগ করুন</a>

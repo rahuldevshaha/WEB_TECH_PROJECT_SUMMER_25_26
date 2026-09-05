@@ -5,19 +5,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if(empty($messId)){
     header("Location: ../home.php");
@@ -39,6 +27,7 @@ if(!$row || $row["Role"] != "Manager"){
 $isErr = false;
 $errorMessage = "";
 $msg = "";
+$showSuccessModal = false;
 
 
 if(reqMethodCheck("POST")){
@@ -68,6 +57,7 @@ if(reqMethodCheck("POST")){
 
         if($result){
             $msg = "Mess Settings Updated Successfully!";
+            $showSuccessModal = true;
         }else{
             $isErr = true;
             $errorMessage = "Failed To Update Settings!";

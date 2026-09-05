@@ -4,26 +4,26 @@
 <html>
     <head>
         <title>Login Page</title>
-        <link rel="stylesheet" href="../../assets/css/emailLogin.css">
+        <link rel="stylesheet" href="/app/view/assets/css/emailLogin.css">
     </head>
     <body >
 
     <div id="registration">
                <div class="img_section">
-            <img src="../../assets/images/loginFormImg.webp">
+            <img src="/app/view/assets/images/loginFormImg.webp">
 
 
         <div class="socials">
             <div class="socials_box">
-                <img src="../../assets/images/FbPage.svg" alt="">
+                <img src="/app/view/assets/images/FbPage.svg" alt="">
                 <p>Our Facebook Page</p>
             </div>
             <div class="socials_box">
-                <img src="../../assets/images/tutorial.svg" alt="">
+                <img src="/app/view/assets/images/tutorial.svg" alt="">
                 <p>How to use The App</p>
             </div>
             <div class="socials_box">
-                <img src="../../assets/images/mobileApp.svg" alt="">
+                <img src="/app/view/assets/images/mobileApp.svg" alt="">
                 <p>Mobile App</p>
             </div>
 
@@ -36,7 +36,7 @@
             
                 <form method="post">
                     <div class="logo_wrapper">
-                            <img src="../../assets/images/messManagerLogo.png" alt="logo">
+                            <img src="/app/view/assets/images/messManagerLogo.png" alt="logo">
                     </div>
 
                     <label for="email">Email</label>
@@ -71,6 +71,6 @@
 
 
 
-    <script src="../../assets/js/registration.js"></script>
+    <script src="/app/view/assets/js/registration.js"></script>
     </body>
 </html>

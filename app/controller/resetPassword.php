@@ -60,7 +60,7 @@
 <html>
 <head>
     <title>Reset Password</title>
-    <link rel="stylesheet" href="../assets/css/resetPassword.css">
+    <link rel="stylesheet" href="../view/assets/css/resetPassword.css">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
             <form method="post">
 
                 <div class="logo_wrapper">
-                    <img src="../assets/images/messManagerLogo.png">
+                    <img src="../view/assets/images/messManagerLogo.png">
                 </div>
 
                 <div class="title">
@@ -105,7 +105,7 @@
 
         </div>
     </div>
-	<script src="../assets/js/resetPassword.js"></script>
+	<script src="../view/assets/js/resetPassword.js"></script>
 
 </body>
 </html>

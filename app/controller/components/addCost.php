@@ -5,18 +5,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 $userId = getSessionValue("userId");
 $currentUserId = $userId;
-$messId = getSessionValue("messId");
-
-if (empty($messId)) {
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if ($result && getRowCount($result) > 0) {
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if (empty($messId)) {
     header("Location: ../home.php");
@@ -147,6 +136,6 @@ if (reqMethodCheck("POST") && isset($_POST["add_cost_submit"])) {
     }
 }
 
-require_once __DIR__ . "/../../view/components/addcost.php";
+require_once __DIR__ . "/../../view/components/addCost.php";
 
 ?>

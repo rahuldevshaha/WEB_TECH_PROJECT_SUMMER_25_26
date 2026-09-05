@@ -197,7 +197,7 @@ function dashboardBalanceClass($amount){
 }
 ?>
 
-<link rel="stylesheet" href="/app/assets/css/dashboard.css">
+<link rel="stylesheet" href="/app/view/assets/css/dashboard.css">
 
 <div class="dashboard-wrapper">
 
@@ -341,7 +341,7 @@ function dashboardBalanceClass($amount){
                 <div class="dashboard-no-members">No members found.</div>
             <?php }else{ ?>
                 <?php foreach($memberDashboard as $member){
-                    $avatar = !empty($member["Avater"]) ? $member["Avater"] : "/app/assets/images/defaultAvater.png";
+                    $avatar = !empty($member["Avater"]) ? $member["Avater"] : "/app/view/assets/images/defaultAvater.png";
                 ?>
                     <div class="member-detail-box">
                         <div class="box-top">
@@ -372,4 +372,4 @@ function dashboardBalanceClass($amount){
 </div>
 
 
-<script src="/app/assets/js/dashboard.js"></script>
+<script src="/app/view/assets/js/dashboard.js"></script>

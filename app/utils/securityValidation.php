@@ -28,4 +28,38 @@ function UnprotectedRequest($redirectPath){
 }
 
 
+
+
+function getVerifiedMessId($userId){
+
+    $cachedMessId = getSessionValue("messId");
+
+    if(!empty($cachedMessId)){
+
+        $sqlQ = "SELECT messId FROM Member WHERE userId='$userId' AND messId='$cachedMessId'";
+        $result = exeQuery($sqlQ);
+
+        if($result && getRowCount($result) > 0){
+            return $cachedMessId;
+        }
+
+        
+        setSessionValue("messId", "");
+    }
+
+    
+    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId' LIMIT 1";
+    $result = exeQuery($sqlQ);
+
+    if($result && getRowCount($result) > 0){
+        $row = getDataRow($result);
+        $freshMessId = $row["messId"];
+        setSessionValue("messId", $freshMessId);
+        return $freshMessId;
+    }
+
+    return "";
+}
+
+
 ?>

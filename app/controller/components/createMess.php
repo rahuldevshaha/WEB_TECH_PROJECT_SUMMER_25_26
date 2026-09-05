@@ -12,6 +12,8 @@ $monthName = "";
 $isErr = false;
 $errorMessage = "";
 $showModal = false;
+$showDeleteSuccessModal = (getSessionValue("messDeleteSuccess") === "1");
+if($showDeleteSuccessModal){ setSessionValue("messDeleteSuccess", ""); }
 
 
 function ResetAllField(){

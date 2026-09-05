@@ -1,6 +1,7 @@
+<link rel="stylesheet" href="/app/view/assets/css/successPopups.css">
 
-    <link rel="stylesheet" href="/app/assets/css/startNewMonth.css">
-    <link rel="stylesheet" href="/app/assets/css/home.css">
+    <link rel="stylesheet" href="/app/view/assets/css/startNewMonth.css">
+    <link rel="stylesheet" href="/app/view/assets/css/home.css">
 
 
 
@@ -73,6 +74,7 @@
                 <input type="hidden" id="hiddenCarryBalance" name="carry_balance">
 
                 <input type="text" id="securityPhraseInput" name="security_phrase" class="modal-input" placeholder="Start new month" required>
+                <p id="startMonthFormError" class="error-text" style="display:none;"></p>
 
                 <div class="modal-btn-row">
                     <button type="button" class="btn-cancel" onclick="closeConfirmModal()">Cancel</button>
@@ -146,6 +148,14 @@
             }
         }
 
+        function showStartMonthError(message) {
+            const errorBox = document.getElementById('startMonthFormError');
+            if (errorBox) {
+                errorBox.textContent = message;
+                errorBox.style.display = 'block';
+            }
+        }
+
         function openConfirmModal() {
             const monthVal = document.getElementById('newMonthInput').value.trim();
             if (!monthVal) {
@@ -155,6 +165,7 @@
 
             
             document.getElementById('hiddenMonthName').value = monthVal;
+            document.getElementById('startMonthFormError').style.display = 'none';
             if (document.getElementById('carryBalanceCheckbox').checked) {
                 document.getElementById('hiddenCarryBalance').value = "1";
             } else {
@@ -170,8 +181,9 @@
 
         function validateSecurityPhrase() {
             const phrase = document.getElementById('securityPhraseInput').value.trim();
+            document.getElementById('startMonthFormError').style.display = 'none';
             if (phrase.toLowerCase() !== 'start new month') {
-                alert('অনুগ্রহ করে সঠিক নিরাপত্তা বাক্যটি টাইপ করুন: Start new month');
+                showStartMonthError('অনুগ্রহ করে সঠিক নিরাপত্তা বাক্যটি টাইপ করুন: Start new month');
                 return false;
             }
             return true;

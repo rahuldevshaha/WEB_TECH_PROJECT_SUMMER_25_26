@@ -4,26 +4,14 @@ include_once "../../utils/securityValidation.php";
 ProtectedRequest("../login/socialLogin.php");
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-        setSessionValue("messId", $messId);
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 if(empty($messId)){
     header("Location: ../home.php");
     exit();
 }
 
-/* =====================================================
-   CURRENT USER ROLE
-===================================================== */
+
 $myRole = "";
 $sqlQ = "SELECT Role FROM Member WHERE messId='$messId' AND userId='$userId'";
 $result = exeQuery($sqlQ);
@@ -33,9 +21,7 @@ if($result && getRowCount($result) > 0){
 }
 $isManager = ($myRole == "Manager");
 
-/* =====================================================
-   EDIT / DELETE ACTIONS - MANAGER ONLY
-===================================================== */
+
 if(isset($_POST["edit_meal_submit"]) ||
    isset($_POST["edit_deposit_submit"]) ||
    isset($_POST["edit_cost_submit"]) ||
@@ -46,34 +32,83 @@ if(isset($_POST["edit_meal_submit"]) ||
         die("Only The Manager Can Edit Or Delete Records!");
     }
 
-    /* ---------- EDIT MEAL ---------- */
+    
     if(isset($_POST["edit_meal_submit"])){
         $mealRecordId = addslashes(trim(getValueFromReq("POST", "mealRecordId")));
+        $editUserId = addslashes(trim(getValueFromReq("POST", "userId")));
         $mealDate = addslashes(trim(getValueFromReq("POST", "mealDate")));
 
-        // Toggle: checked = 1, unchecked = 0
+        
         $morning = isset($_POST["morning"]) ? 1 : 0;
         $lunch   = isset($_POST["lunch"]) ? 1 : 0;
         $dinner  = isset($_POST["dinner"]) ? 1 : 0;
 
-        if(empty($mealRecordId) || empty($mealDate)){
+        if(empty($mealDate)){
             die("Invalid Meal Data!");
         }
 
-        $sqlQ = "UPDATE MealRecord SET
-            Morning='$morning',
-            Lunch='$lunch',
-            Dinner='$dinner',
-            mealDate='$mealDate',
-            updatedAt=NOW()
-            WHERE mealRecordId='$mealRecordId' AND messId='$messId'";
+        if(!empty($mealRecordId)){
 
-        exeQuery($sqlQ);
+            
+            $sqlQ = "UPDATE MealRecord SET
+                Morning='$morning',
+                Lunch='$lunch',
+                Dinner='$dinner',
+                mealDate='$mealDate',
+                updatedAt=NOW()
+                WHERE mealRecordId='$mealRecordId' AND messId='$messId'";
+
+            exeQuery($sqlQ);
+
+        }else{
+
+            
+            if(empty($editUserId)){
+                die("Invalid Meal Data!");
+            }
+
+            $sqlQ = "SELECT userId FROM Member WHERE messId='$messId' AND userId='$editUserId'";
+            $result = exeQuery($sqlQ);
+            if(!$result || getRowCount($result) == 0){
+                die("Invalid Member!");
+            }
+
+            $sqlQ = "SELECT mealRecordId FROM MealRecord
+                WHERE messId='$messId' AND userId='$editUserId' AND mealDate='$mealDate'";
+            $result = exeQuery($sqlQ);
+
+            if($result && getRowCount($result) > 0){
+
+                
+                $existingRow = getDataRow($result);
+
+                $sqlQ = "UPDATE MealRecord SET
+                    Morning='$morning',
+                    Lunch='$lunch',
+                    Dinner='$dinner',
+                    updatedAt=NOW()
+                    WHERE mealRecordId='" . $existingRow["mealRecordId"] . "' AND messId='$messId'";
+
+                exeQuery($sqlQ);
+
+            }else{
+
+                $newMealRecordId = generatePkID("meal");
+
+                $sqlQ = "INSERT INTO MealRecord
+                    (mealRecordId, messId, userId, Morning, Lunch, Dinner, mealDate, mealAddedBy)
+                    VALUES
+                    ('$newMealRecordId', '$messId', '$editUserId', '$morning', '$lunch', '$dinner', '$mealDate', '$userId')";
+
+                exeQuery($sqlQ);
+            }
+        }
+
         header("Location: " . $_SERVER["REQUEST_URI"]);
         exit();
     }
 
-    /* ---------- EDIT DEPOSIT ---------- */
+    
     if(isset($_POST["edit_deposit_submit"])){
         $fundId = addslashes(trim(getValueFromReq("POST", "fundId")));
         $submittedBy = addslashes(trim(getValueFromReq("POST", "submittedBy")));
@@ -105,7 +140,7 @@ if(isset($_POST["edit_meal_submit"]) ||
         exit();
     }
 
-    /* ---------- EDIT COST ---------- */
+    
     if(isset($_POST["edit_cost_submit"])){
         $expenseId = addslashes(trim(getValueFromReq("POST", "expenseId")));
         $costType = addslashes(trim(getValueFromReq("POST", "costType")));
@@ -145,7 +180,7 @@ if(isset($_POST["edit_meal_submit"]) ||
         exit();
     }
 
-    /* ---------- DELETE DEPOSIT ---------- */
+    
     if(isset($_POST["delete_deposit_submit"])){
         $fundId = addslashes(trim(getValueFromReq("POST", "fundId")));
 
@@ -160,7 +195,7 @@ if(isset($_POST["edit_meal_submit"]) ||
         exit();
     }
 
-    /* ---------- DELETE COST ---------- */
+    
     if(isset($_POST["delete_cost_submit"])){
         $expenseId = addslashes(trim(getValueFromReq("POST", "expenseId")));
 
@@ -182,9 +217,7 @@ $monthEnd = date("Y-m-t");
 $activeMonth = date("F Y");
 $today = date("Y-m-d");
 
-/* =====================================================
-   MEMBERS
-===================================================== */
+
 $members = array();
 
 $sqlQ = "SELECT u.userId, u.Name, m.Role FROM Member m
@@ -199,9 +232,7 @@ if($result){
     }
 }
 
-/* =====================================================
-   MEALS
-===================================================== */
+
 $mealRecords = array();
 
 $sqlQ = "SELECT mr.mealRecordId, mr.userId, u.Name, mr.Morning, mr.Lunch, mr.Dinner,
@@ -219,9 +250,7 @@ if($result){
     }
 }
 
-/* =====================================================
-   DEPOSITS
-===================================================== */
+
 $depositRecords = array();
 
 $sqlQ = "SELECT f.fundId, f.amount, f.note, f.submitDate, f.submittedBy, f.receivedById,
@@ -241,9 +270,7 @@ if($result){
     }
 }
 
-/* =====================================================
-   COSTS
-===================================================== */
+
 $mealCostRecords = array();
 $otherCostRecords = array();
 
@@ -268,10 +295,7 @@ if($result){
     }
 }
 
-/* =====================================================
-   BAZAR - MEMBER WISE CURRENT MONTH
-   AssignBazar.bazarDates is JSON array of dates.
-===================================================== */
+
 $bazarMemberRecords = array();
 
 foreach($members as $member){
@@ -308,9 +332,7 @@ foreach($members as $member){
     );
 }
 
-/* =====================================================
-   HISAB
-===================================================== */
+
 $hisabTotalMeal = 0;
 $hisabTotalDeposit = 0;
 $hisabTotalCost = 0;

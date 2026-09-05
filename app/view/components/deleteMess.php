@@ -1,8 +1,8 @@
 
     
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/app/assets/css/deleteMess.css">
-    <link rel="stylesheet" href="/app/assets/css/home.css">
+    <link rel="stylesheet" href="/app/view/assets/css/deleteMess.css">
+    <link rel="stylesheet" href="/app/view/assets/css/home.css">
 
     
     <div id="home_page">

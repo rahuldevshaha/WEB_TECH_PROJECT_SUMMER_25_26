@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/app/assets/css/addcost.css">
-<link rel="stylesheet" href="/app/assets/css/home.css">
+<link rel="stylesheet" href="/app/view/assets/css/addCost.css">
+<link rel="stylesheet" href="/app/view/assets/css/home.css">
 
 <div id="home_page">
     <div class="nav">
@@ -176,4 +176,4 @@
     </div>
 </div>
 
-<script src="/app/assets/js/addcost.js"></script>
+<script src="/app/view/assets/js/addcost.js"></script>

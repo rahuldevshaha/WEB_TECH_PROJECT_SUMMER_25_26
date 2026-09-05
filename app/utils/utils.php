@@ -1,12 +1,6 @@
 <?php
 
-/*
- * IMPORTANT: Without an explicit timezone, PHP falls back to the
- * server's default (often UTC). Dhaka is UTC+6, so date()/DateTime
- * calls (today's date, meal cutoff deadlines, "already booked"
- * date grouping) could resolve to the previous day around/after
- * 6:00 PM Dhaka time. Fix by pinning the app timezone.
- */
+
 date_default_timezone_set('Asia/Dhaka');
 
 

@@ -5,17 +5,7 @@ ProtectedRequest("../login/socialLogin.php");
 
 
 $userId = getSessionValue("userId");
-$messId = getSessionValue("messId");
-
-if(empty($messId)){
-    $sqlQ = "SELECT messId FROM Member WHERE userId='$userId'";
-    $result = exeQuery($sqlQ);
-
-    if(getRowCount($result) > 0){
-        $row = getDataRow($result);
-        $messId = $row["messId"];
-    }
-}
+$messId = getVerifiedMessId($userId);
 
 
 

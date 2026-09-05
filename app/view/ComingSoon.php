@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/app/assets/css/home.css">
+<link rel="stylesheet" href="/app/view/assets/css/home.css">
 
 <style>
     #content_body {
