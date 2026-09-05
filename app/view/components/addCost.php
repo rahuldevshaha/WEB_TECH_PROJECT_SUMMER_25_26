@@ -96,7 +96,7 @@
                                 type="checkbox"
                                 id="fundCheck"
                                 name="auto_fund"
-                                <?php echo (!isset($_POST["add_cost_submit"]) || isset($_POST["auto_fund"])) ? 'checked' : ''; ?>
+                                <?php echo (!isset($_POST["add_cost_submit"]) || isset($_POST["auto_fund"])) ? '' : ''; ?>
                             >
                             <label for="fundCheck">সমপরিমাণ টাকা তার নামে জমা করুন?</label>
                         </div>
@@ -155,13 +155,10 @@
                                     মাসের বিস্তারিত হিসাব
                                 </a>
 
-                                <a href="addcost.php" class="modal-btn-light">
-                                    আরো খরচ যুক্ত করুন
+                                <a href="addcost.php" class="modal-btn-red">
+                                    OK, Great!
                                 </a>
 
-                                <a href="dashboard.php" class="modal-btn-red">
-                                    Go to Dashboard
-                                </a>
                             </div>
                         </div>
                     </div>
