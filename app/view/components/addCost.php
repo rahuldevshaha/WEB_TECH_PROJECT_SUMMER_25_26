@@ -121,7 +121,7 @@
                         </div>
                     </a>
                 </div>
-
+ 
                 <?php if ($showModal): ?>
                     <div id="costSuccessModal" class="modal-overlay active" role="dialog" aria-modal="true">
                         <div class="modal-card">

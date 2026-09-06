@@ -241,7 +241,7 @@ if (!defined('ACTIVE_MONTH_DETAILS_CONTROLLER_LOADED')) {
                         <div class="empty-state-box">
                             <p class="empty-state-text">No deposit has been added in this month!</p>
                             <?php if ($isManager): ?>
-                                <a href="addDeposit.php" class="primary-action-btn">Add Deposit</a>
+                                <!-- <a href="addDeposit.php" class="primary-action-btn">Add Deposit</a> -->
                             <?php endif; ?>
                         </div>
                     <?php else: ?>
@@ -318,7 +318,7 @@ if (!defined('ACTIVE_MONTH_DETAILS_CONTROLLER_LOADED')) {
                         <div class="empty-state-box">
                             <p class="empty-state-text">No other cost has been added in this month!</p>
                             <?php if ($isManager): ?>
-                                <a href="addCost.php" class="primary-action-btn">Add Cost</a>
+                                <!-- <a href="addCost.php" class="primary-action-btn">Add Cost</a> -->
                             <?php endif; ?>
                         </div>
                     <?php else: ?>
